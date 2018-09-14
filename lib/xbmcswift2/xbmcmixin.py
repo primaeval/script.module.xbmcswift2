@@ -411,7 +411,9 @@ class XBMCMixin(object):
 
         for index in range(0,len(tuples)):
             item = tuples[index][1]
-            item.setArt({'poster':items[index]["thumbnail"]})
+            thumbnail = items[index].get("thumbnail")
+            if thumbnail:
+                item.setArt({'poster': thumbnail})
 
         xbmcplugin.addDirectoryItems(self.handle, tuples, len(tuples))
 
