@@ -408,14 +408,6 @@ class XBMCMixin(object):
         '''
         _items = [self._listitemify(item) for item in items]
         tuples = [item.as_tuple() for item in _items]
-
-        for index in range(0,len(tuples)):
-            try:
-                item = tuples[index][1]
-                item.setArt({'poster':items[index]["thumbnail"]})
-            except:
-                pass
-
         xbmcplugin.addDirectoryItems(self.handle, tuples, len(tuples))
 
         # We need to keep track internally of added items so we can return them
